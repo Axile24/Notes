@@ -22,8 +22,8 @@ async function addNote(note) {
     id: uuid(),
     title: note.title,
     text: note.text,
-    createdAt: new Date(),
-    modifiedAt: new Date(),
+    createdAt: new Date().toDateString(),
+    modifiedAt: new Date().toDateString(),
   };
   return await notesDB.insert(noteObj);
 }
@@ -40,7 +40,7 @@ async function removeNote(id) {
   } else {
     return {
       success: false,
-      message: 'No note found with that id',
+      message: 'No note found with that id [FROM REMOVE NOTE FUNCTION]',
     };
   }
 }
@@ -52,7 +52,7 @@ async function updateNote(id, updatedNote) {
   if (!existingNote) {
     return {
       success: false,
-      message: 'No note found with that id',
+      message: 'No note found with that id[FROM UPDATE NOTE FUNCTION]',
     };
   }
 
